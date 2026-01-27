@@ -7,19 +7,8 @@ Create a function named sumLargestNumbers that will receive an array of numbers 
 */
 
 const sumLargestNumbers = function (data) {
-  let largest = -Infinity;
-  let secondLargest = -Infinity;
-
-  for (let number of data) {
-    if (number > largest) {
-      secondLargest = largest;
-      largest = number;
-    } else if (number > secondLargest) {
-      secondLargest = number;
-    }
-  }
-
-  return largest + secondLargest;
+  data.sort((a, b) => b - a); 
+  return data[0] + data[1];
 };
 
 console.log(sumLargestNumbers([1, 10])); // 11
@@ -27,3 +16,4 @@ console.log(sumLargestNumbers([1, 2, 3])); // 5
 console.log(sumLargestNumbers([10, 4, 34, 6, 92, 2])); // 126
 
 module.exports = sumLargestNumbers;
+
