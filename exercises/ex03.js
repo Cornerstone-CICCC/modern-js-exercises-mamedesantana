@@ -8,20 +8,19 @@ Create a function named numberOfVowels that will receive a string and return the
 */
 
 const numberOfVowels = function (data) {
-  let count = 0;
   const vowels = "aeiou";
 
-  for (let char of data) {
+  return [...data].reduce((count, char) => {
     if (vowels.includes(char)) {
-      count++;
+      return count + 1;
     }
-  }
-
-  return count;
+    return count;
+  }, 0);
 };
 
-console.log(numberOfVowels("orange")); 
-console.log(numberOfVowels("cornerstone college")); 
-console.log(numberOfVowels("aeiou")); 
+console.log(numberOfVowels("orange")); // 3
+console.log(numberOfVowels("cornerstone college")); // 7
+console.log(numberOfVowels("aeiou")); // 5
 
 module.exports = numberOfVowels;
+

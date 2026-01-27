@@ -8,17 +8,13 @@ Expected Output
 Instruction
 Create a function named instructorWithLongestName that will receive an array of instructor objects, and return the object that has the longest name. If there are two instructors with the longest name, return the first one.
 */
-
 const instructorWithLongestName = function (instructors) {
-  let longestInstructor = instructors[0];
-
-  for (let instructor of instructors) {
-    if (instructor.name.lenght > longestInstructor.name.lenght) {
-      longetInstructor = instructor;
+  return instructors.reduce((longest, current) => {
+    if (current.name.length > longest.name.length) {
+      return current;
     }
-  }
-
-  return longestInstructor;
+    return longest;
+  });
 };
 
 console.log(
@@ -28,7 +24,7 @@ console.log(
     { name: "Ophilia", course: "Web" },
     { name: "Donald", course: "Web" },
   ])
-); //{name: "Jeremiah", course: "Web"}
+); // { name: "Jeremiah", course: "Web" }
 
 console.log(
   instructorWithLongestName([
@@ -36,6 +32,6 @@ console.log(
     { name: "David", course: "Mobile" },
     { name: "Domascus", course: "Web" },
   ])
-); //{name: "Domascus", course: "Web"}
+); // { name: "Domascus", course: "Web" }
 
 module.exports = instructorWithLongestName;
