@@ -9,8 +9,16 @@ Not sure where to get started? It might be useful to start by creating a variabl
 */
 
 const checkAir = function (samples, threshold) {
-  // Code here!
+  const dirtyCount = samples.reduce((count, sample) => {
+  return sample === "dirty" ? count +1 : count;
+  }, 0);
+ 
+  const dirtyRatio = dirtyCount / samples.length;
+
+  return dirtyRatio >= threshold ? "Polluted" : "Clean";
 };
+
+module.exports = checkAir;
 
 console.log(
   checkAir(

@@ -20,7 +20,24 @@ Note: There may be multiple available spots for a particular vehicle. It does no
 */
 
 const whereCanIPark = function (spots, vehicle) {
-  // Code here!
+  const allowedSpots = 
+  vehicle === "regular"
+  ? ["R"]
+  : vehicle === "small"
+  ? ["R", "S"]
+  : ["R", "S", "M"];
+
+  return spots.reduce((result, row, y) => {
+    if (result) return result;
+
+    const x = row.findIndex(spot => allowedSpots.includes(spot));
+
+    if (x !== -1) {
+      return [x, y];
+    }
+
+    return false;
+  }, false);
 };
 
 console.log(
