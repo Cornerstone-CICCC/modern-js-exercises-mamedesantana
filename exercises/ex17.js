@@ -22,7 +22,17 @@ Create a function named urlDecode that will receive a URL encoded string, and re
 */
 
 const urlDecode = function (text) {
-  // Put your solution here
+  const result = {};
+  const pairs = text.split("&");
+
+
+for (let pair of pairs) {
+    const [key, value] = pair.split("=");
+    result[key] = value.split("%20").join(" ");
+  }
+
+
+  return result;
 };
 
 console.log(urlDecode("duck=rubber")); //{duck: "rubber"}
